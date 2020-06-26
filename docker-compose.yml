@@ -1,0 +1,20 @@
+version: '3'
+volumes:
+  laravel:
+services:
+  php-fpm:
+    image: php:alpine
+    volumes:
+      - laravel:/var/www
+  nginx:
+    image: nginx
+    ports: 
+      - 80:80
+    depends_on: 
+      - php-fpm
+  workspace:
+    build: ./workspace
+    tty: true
+    working_dir: /workspace
+    volumes:
+      - laravel:/workspace
