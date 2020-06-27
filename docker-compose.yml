@@ -1,13 +1,13 @@
 version: '3'
-volumes:
-  laravel:
 services:
   php-fpm:
-    image: php:alpine
+    image: php:7.4.7-fpm-alpine
     volumes:
-      - laravel:/var/www
+      - ${APP_FOLDER}:/var/www/laravel
   nginx:
-    image: nginx
+    build: ./nginx
+    volumes:
+      - ${APP_FOLDER}/public:/var/www/laravel/public
     ports: 
       - 80:80
     depends_on: 
@@ -17,4 +17,4 @@ services:
     tty: true
     working_dir: /workspace
     volumes:
-      - laravel:/workspace
+      - ${APP_FOLDER}:/workspace
