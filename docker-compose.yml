@@ -1,7 +1,7 @@
 version: '3'
 services:
   php-fpm:
-    image: php:7.4.7-fpm-alpine
+    build: ./php-fpm
     volumes:
       - ${APP_FOLDER}:/var/www/laravel
   nginx:
@@ -12,6 +12,15 @@ services:
       - 80:80
     depends_on: 
       - php-fpm
+  redis:
+    image: redis
+  mysql:
+    image: mysql
+    restart: always
+    environment: 
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
   workspace:
     build: ./workspace
     tty: true

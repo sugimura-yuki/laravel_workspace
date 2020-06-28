@@ -22,14 +22,19 @@
 		"terminal.integrated.shell.linux": null
 	},
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [],
+	"extensions": [
+		"bmewburn.vscode-intelephense-client",
+		"onecentlin.laravel-blade"
+	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	"runServices": [
 		"php-fpm",
 		"nginx",
-		"workspace"
+		"workspace",
+		"redis",
+		"mysql"
 	],
 	// Uncomment the next line if you want to keep your containers running after VS Code shuts down.
 	"shutdownAction": "stopCompose",
