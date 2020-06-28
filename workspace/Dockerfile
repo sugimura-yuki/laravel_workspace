@@ -4,3 +4,5 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN apt update && apt install -y zip unzip
 
+RUN docker-php-ext-install pdo_mysql
+

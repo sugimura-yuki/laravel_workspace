@@ -16,14 +16,18 @@ services:
     image: redis
   mysql:
     image: mysql
-    restart: always
     environment: 
       MYSQL_DATABASE: database
       MYSQL_USER: user
-      MYSQL_PASSWORD: secret
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
   workspace:
     build: ./workspace
     tty: true
     working_dir: /workspace
     volumes:
       - ${APP_FOLDER}:/workspace
+volumes:
+  mysql-data:
